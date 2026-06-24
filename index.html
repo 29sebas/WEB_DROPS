@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB DROPS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="overlay"></div>
+    <div class="custom-cursor"></div>
+
+    <div class="menu">
+        <a href="#" class="logo">WEB DROPS</a>
+        <nav class="navbar">
+            <a href="#">DROPS</a>
+            <a href="#" id="openLoginModal">ACCESO</a>
+        </nav>
+    </div>
+
+    <div class="hero-content">
+        <div class="text-unique">
+            <h1>NOT FOR EVERYONE</h1>
+            <p>LIMITED DROPS-PRIVATE ACCESS</p>
+            <a href="#" class="access-link" id="openModal">Unlock Access</a>
+        </div>
+    </div>
+</header>
+
+<section class="drops-section reveal">
+    <p class="label">CURRENT DROP</p>
+    <h2>NEXT DROP</h2>
+    <p class="description">Selected pieces available only for approved members.</p>
+</section>
+
+<div class="modal" id="accessModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h2>REQUEST ACCESS</h2>
+        <p class="modal-subtitle">ENTER YOUR DETAILS TO ENTER THE QUEUE</p>
+
+        <form id="accessForm" class="access-form">
+            <input type="text" id="name" placeholder="NAME">
+            <input type="email" id="email" placeholder="EMAIL" required>
+            <input type="text" id="instagram" placeholder="INSTAGRAM">
+            <textarea id="message" placeholder="WHY DO YOU WANT YOU ENTER?" required></textarea>
+            <button type="submit">SEND REQUEST</button>
+        </form>
+
+        <a href="#" id="inviteButton" class="invite-link">Send As Invitation</a>
+
+        <div id="loadingBox" class="loading-box">
+            <h3>Request was sent</h3>
+            <p>Your petition is under review...</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h3>ACCESS REQUEST RECEIVED</h3>
+            <p>Your application is now under review.</p>
+        </div>
+    </div>
+</div>
+
+<div id="inviteModal" class="modal">
+    <div class="modal-content">
+        <span id="closeInviteModal" class="close-modal">&times;</span>
+        <h2>Send as Invitation</h2>
+        <p class="modal-subtitle">Invite a friend with a unique code</p>
+
+        <form id="inviteForm" class="access-form">
+            <input type="email" id="inviteEmail" placeholder="Friend's Email" required>
+            <input type="text" id="inviteCode" placeholder="Invitation Code" required>
+            <button type="submit">Send Invitation</button>
+        </form>
+
+        <div id="inviteSuccess" class="success-message">
+            <h3>Invitation Sent</h3>
+            <p>Your friend can now request access with the code.</p>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeLoginModal">&times;</span>
+        <h2>LOGIN ACCESS</h2>
+        <p class="modal-subtitle">ENTER YOUR REGISTERED ACCOUNT DETAILS</p>
+        
+        <form id="loginForm" class="access-form">
+            <input type="email" id="loginEmail" placeholder="YOUR EMAIL" required>
+            <input type="password" id="loginPassword" placeholder="PASSWORD OR CODE" required>
+            <button type="submit">ENTER SYSTEM</button>
+        </form>
+
+        <div id="loginSuccess" class="success-message">
+            <h3>WELCOME BACK</h3>
+            <p>Redirecting to your dashboard...</p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
