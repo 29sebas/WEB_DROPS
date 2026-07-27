@@ -102,6 +102,101 @@
     </div>
 </div>
 
+<div id="storePanel" class="store-panel">
+    <div class="store-topbar">
+        <span class="store-logo">DROPS</span>
+        <nav class="store-nav">
+            <a href="#" class="cat-btn active" data-cat="todo">Todo</a>
+            <a href="#" class="cat-btn" data-cat="hombre">Hombre</a>
+            <a href="#" class="cat-btn" data-cat="mujer">Mujer</a>
+            <a href="#" class="cat-btn" data-cat="unisex">Unisex</a>
+            <a href="#" class="cat-btn" data-cat="accesorios">Accesorios</a>
+        </nav>
+        <button id="closeStorePanel" class="store-close">&times;</button>
+    </div>
+
+    <div class="store-hero">
+        <h1>DROPS</h1>
+        <p>Nueva Colección 2026</p>
+    </div>
+
+    <div class="store-grid" id="storeGrid">
+        <div class="store-card" data-cat="hombre">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="">
+            <span class="tag">Hombre</span>
+            <h3>Jersey Hip Hop 85 - Nike</h3>
+            <p>$119.900</p>
+        </div>
+        <div class="store-card" data-cat="mujer">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="">
+            <span class="tag">Mujer</span>
+            <h3>Vestido Negro con Abrigo - Gucci</h3>
+            <p>$449.900</p>
+        </div>
+        <div class="store-card" data-cat="accesorios">
+            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=500" alt="">
+            <span class="tag">Accesorios</span>
+            <h3>Reloj Rolex Classic</h3>
+            <p>$899.900</p>
+        </div>
+        <div class="store-card" data-cat="accesorios">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="">
+            <span class="tag">Accesorios</span>
+            <h3>Cadena Oro Gruesa - Boss</h3>
+            <p>$329.900</p>
+        </div>
+        <div class="store-card" data-cat="hombre">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500" alt="">
+            <span class="tag">Hombre</span>
+            <h3>Conjunto Hip Hop Oversized - Jordan</h3>
+            <p>$149.900</p>
+        </div>
+        <div class="store-card" data-cat="unisex">
+            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500" alt="">
+            <span class="tag">Unisex</span>
+            <h3>Gorra Snapback Premium - True</h3>
+            <p>$42.900</p>
+        </div>
+    </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const explorarBtn = document.getElementById("explorarBtn");
+    explorarBtn.addEventListener("click", () => {
+      const productosSection = document.getElementById("productos");
+      if (productosSection) {
+        productosSection.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error("No existe la sección con id='productos'");
+      }
+    });
+  });
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const explorarBtn = document.getElementById("explorarBtn");
+    const productosSection = document.getElementById("productos");
+    const coleccionesSection = document.getElementById("colecciones");
+
+    // Botón Explorar Ahora → scroll a productos
+    explorarBtn.addEventListener("click", () => {
+      productosSection.scrollIntoView({ behavior: "smooth" });
+    });
+
+    // Menú Colecciones → mostrar sección
+    document.querySelector('a[href="#colecciones"]').addEventListener("click", (e) => {
+      e.preventDefault(); // evita el salto directo
+      coleccionesSection.style.display = "block"; // muestra la sección
+      coleccionesSection.scrollIntoView({ behavior: "smooth" }); // baja hasta ella
+    });
+  });
+</script>
+
+
+
 <script src="script.js"></script>
 </body>
 </html>

@@ -979,3 +979,128 @@ MENSAJE EXITOSO
   animation: fadeUp .8s ease;
 }
 
+/* ============ STORE PANEL (post-login) ============ */
+.store-panel{
+    position:fixed;
+    inset:0;
+    background:#fafafa;
+    z-index:6000;
+    overflow-y:auto;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(30px);
+    transition:opacity .5s ease, transform .5s ease, visibility .5s;
+}
+
+.store-panel.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.store-topbar{
+    position:sticky;
+    top:0;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 50px;
+    z-index:10;
+}
+
+.store-logo{
+    color:#fff;
+    font-weight:700;
+    letter-spacing:3px;
+    font-size:22px;
+}
+
+.store-nav{ display:flex; gap:10px; }
+
+.cat-btn{
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:1px;
+    padding:9px 18px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.25);
+    transition:all .3s ease;
+}
+
+.cat-btn:hover{ border-color:#fff; }
+
+.cat-btn.active{
+    background:#fff;
+    color:#000;
+}
+
+.store-close{
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+    line-height:1;
+}
+
+.store-hero{
+    text-align:center;
+    padding:70px 20px 40px;
+}
+
+.store-hero h1{
+    font-family:'Playfair Display', serif;
+    font-size:56px;
+    letter-spacing:2px;
+}
+
+.store-hero p{ color:#777; letter-spacing:2px; margin-top:10px; }
+
+.store-grid{
+    padding:20px 60px 90px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.store-card{
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+    transition:transform .3s ease;
+    position:relative;
+}
+
+.store-card:hover{ transform:translateY(-8px); }
+
+.store-card img{
+    width:100%;
+    height:270px;
+    object-fit:cover;
+}
+
+.store-card .tag{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:rgba(0,0,0,.75);
+    color:#fff;
+    font-size:10px;
+    letter-spacing:1px;
+    padding:5px 10px;
+    border-radius:20px;
+}
+
+.store-card h3{ padding:16px 16px 4px; font-size:15px; }
+.store-card p{ padding:0 16px 18px; color:#c7a76c; font-weight:700; }
+
+.store-card.hidden{ display:none; }
+
+@media(max-width:768px){
+    .store-topbar{ flex-wrap:wrap; gap:12px; padding:16px 20px; }
+    .store-nav{ order:3; width:100%; overflow-x:auto; }
+    .store-grid{ padding:20px; }
+}

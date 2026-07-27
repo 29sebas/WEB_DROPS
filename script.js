@@ -117,6 +117,7 @@ if (accessForm) {
 }
 
 // Formulario de Invitaciones
+// Formulario de Invitaciones (Acceso con email + código)
 const inviteForm = document.getElementById('inviteForm');
 const inviteSuccess = document.getElementById('inviteSuccess');
 
@@ -134,52 +135,91 @@ if (inviteForm) {
       });
 
       if (response.ok) {
-        inviteForm.style.display = 'none';
+        // Mostrar mensaje de éxito
         inviteSuccess.classList.add('active');
+
+        // Después de 1.5 segundos, abrir la tienda
         setTimeout(() => {
-          inviteModal.classList.remove('active');
-          inviteForm.reset();
-          inviteForm.style.display = 'flex';
-          inviteSuccess.classList.remove('active');
-        }, 2500);
+          window.location.href = "tienda.html";
+        }, 1500);
+
+      } else {
+        alert('Acceso denegado. Correo o código inválido.');
       }
     } catch (err) {
-      alert('Error al conectar.');
+      alert('Error al conectar con el servidor.');
     }
   });
 }
 
+
 // Formulario de Login
+// Formulario de Login (sin servidor, acceso directo a tienda)
 const loginForm = document.getElementById('loginForm');
 const loginSuccess = document.getElementById('loginSuccess');
 
 if (loginForm) {
-  loginForm.addEventListener('submit', async (e) => {
+  loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
 
-    try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
+    // Aquí podrías validar email/código si quieres, pero lo dejamos libre
+    loginSuccess.classList.add('active');
 
-      if (response.ok) {
-        loginForm.style.display = 'none';
-        loginSuccess.classList.add('active');
-        setTimeout(() => {
-          loginModal.classList.remove('active');
-          loginForm.reset();
-          loginForm.style.display = 'flex';
-          loginSuccess.classList.remove('active');
-        }, 2500);
+    // Después de 1.5 segundos, abrir la tienda
+    setTimeout(() => {
+      window.location.href = "tienda.html";
+    }, 1500);
+  });
+}
+
+
+// ========================================================
+// STORE PANEL (post-login)
+// ========================================================
+const storePanel = document.getElementById('storePanel');
+const closeStorePanel = document.getElementById('closeStorePanel');
+const catButtons = document.querySelectorAll('.cat-btn');
+const storeCards = document.querySelectorAll('.store-card');
+
+if (closeStorePanel) {
+  closeStorePanel.addEventListener('click', () => {
+    storePanel.classList.remove('active');
+  });
+}
+
+catButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    catButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cat = btn.dataset.cat;
+    storeCards.forEach(card => {
+      if (cat === 'todo' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
       } else {
-        alert('Acceso denegado. Correo no registrado.');
+        card.classList.add('hidden');
       }
-    } catch (err) {
-      alert('Error de conexión.');
+    });
+  });
+});
+
+const subscribeBtn = document.getElementById('subscribeBtn');
+const subscribeEmail = document.getElementById('subscribeEmail');
+
+if (subscribeBtn) {
+  subscribeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const email = subscribeEmail.value;
+
+    if (email) {
+      alert(`Registro exitoso con el correo: ${email}`);
+      // Aquí puedes redirigir al acceso/login
+      window.location.href = "login.html"; // o tu modal de acceso
+    } else {
+      alert("Por favor ingresa un correo válido.");
     }
   });
 }
+
+
